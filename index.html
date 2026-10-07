@@ -611,7 +611,7 @@
       const visible = resources.filter(matches);
       library.innerHTML = "";
 
-      count.textContent = `${visible.length} recurso${visible.length === 1 ? "" : "s"} disponível${visible.length === 1 ? "" : "veis"}`;
+      count.textContent = `${visible.length} recurso${visible.length === 1 ? "" : "s"} ${visible.length === 1 ? "disponível" : "disponíveis"}`;
 
       groupOrder.forEach(group => {
         const items = visible.filter(item => item.group === group);
