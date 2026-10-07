@@ -326,7 +326,7 @@
         Uma porta de acesso a bibliotecas digitais, livros, eBooks e audiolivros
         disponíveis gratuitamente na Internet.
       </p>
-      <div class="intro">O mundo dos livros em domínio público reunido num só espaço!!!<br>Centenas de milhares de livros. Em muitas línguas.<br>Uma biblioteca digital ao alcance de todos.</div>
+      <div class="intro">Centenas de milhares de livros. Em muitas línguas.<br>Uma biblioteca digital ao alcance de todos.</div>
     </header>
 
     <section class="library-panel" aria-label="Recursos de livros gratuitos">
@@ -611,7 +611,7 @@
       const visible = resources.filter(matches);
       library.innerHTML = "";
 
-      count.textContent = `${visible.length} recurso${visible.length === 1 ? "" : "s"} disponível${visible.length === 1 ? "" : "is"}`;
+      count.textContent = `${visible.length} recurso${visible.length === 1 ? "" : "s"} disponível${visible.length === 1 ? "" : "veis"}`;
 
       groupOrder.forEach(group => {
         const items = visible.filter(item => item.group === group);
