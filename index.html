@@ -281,6 +281,13 @@
       line-height:1.5;
     }
 
+    .footer a{
+      display:inline-block;
+      margin-top:8px;
+      color:var(--gold-light);
+      text-underline-offset:.18em;
+    }
+
     .empty{
       display:none;
       text-align:center;
@@ -346,252 +353,20 @@
         </div>
       </div>
 
-      <p class="count" id="count"></p>
+      <p class="count" id="count" role="status">A carregar os recursos…</p>
 
       <div id="library"></div>
       <div class="empty" id="empty">Não encontrámos nenhum recurso com essa pesquisa.</div>
     </section>
 
     <div class="footer">
-      Uma seleção do <strong>Prazeres Interrompidos</strong> para aproximar leitores dos livros.
+      <div>Uma seleção do <strong>Prazeres Interrompidos</strong> para aproximar leitores dos livros.</div>
+      <a href="https://administracao-biblioteca-universal.oct-nuno.chatgpt.site/" target="_blank" rel="noopener noreferrer">Administração</a>
     </div>
   </main>
 
   <script>
-    const resources = [
-      {
-        name:"1.000 Free Audio Books – Open Culture",
-        url:"https://www.openculture.com/freeaudiobooks",
-        category:"audio internacional",
-        group:"Audiolivros",
-        icon:"🎧",
-        desc:"Uma grande coleção de audiolivros gratuitos, sobretudo clássicos."
-      },
-      {
-        name:"70,000 free e-books – Project Gutenberg",
-        url:"https://www.gutenberg.org/",
-        category:"ebook internacional",
-        group:"Grandes bibliotecas digitais",
-        icon:"📚",
-        desc:"Uma das maiores coleções de e-books gratuitos do mundo."
-      },
-      {
-        name:"800 Free e-books – Open Culture",
-        url:"https://www.openculture.com/free_ebooks",
-        category:"ebook internacional",
-        group:"e-books e leitura digital",
-        icon:"📖",
-        desc:"Seleção de e-books gratuitos para diferentes dispositivos."
-      },
-      {
-        name:"Almamater – Biblioteca Geral Digital",
-        url:"https://am.uc.pt/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"🏛️",
-        desc:"Biblioteca de Fundo Antigo e coleções digitais da Universidade de Coimbra."
-      },
-      {
-        name:"Arquivos digitais da Torre do Tombo",
-        url:"https://digitarq.arquivos.pt/",
-        category:"portugal",
-        group:"Portugal",
-        icon:"📜",
-        desc:"Património documental digitalizado do Arquivo Nacional da Torre do Tombo."
-      },
-      {
-        name:"Bartleby",
-        url:"https://www.bartleby.com/lit-hub/authors/",
-        category:"internacional ebook",
-        group:"e-books e leitura digital",
-        icon:"📘",
-        desc:"Biblioteca online com obras literárias, académicas e de referência."
-      },
-      {
-        name:"Biblioteca da Imprensa Nacional",
-        url:"https://imprensanacional.pt/biblioteca/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"🇵🇹",
-        desc:"Biblioteca e publicações digitais da Imprensa Nacional."
-      },
-      {
-        name:"Biblioteca de Arte – Fundação Calouste Gulbenkian",
-        url:"https://www.biblartepac.gulbenkian.pt/",
-        category:"portugal",
-        group:"Portugal",
-        icon:"🎨",
-        desc:"Recursos digitais da Biblioteca de Arte da Fundação Calouste Gulbenkian."
-      },
-      {
-        name:"Biblioteca Digital BBM – Brasil",
-        url:"https://digital.bbm.usp.br/handle/bbm/1",
-        category:"brasil ebook",
-        group:"Brasil",
-        icon:"🇧🇷",
-        desc:"Acervo digital da Biblioteca Brasiliana Guita e José Mindlin."
-      },
-      {
-        name:"Biblioteca do Senado Federal – Brasil",
-        url:"https://www12.senado.leg.br/institucional/biblioteca",
-        category:"brasil",
-        group:"Brasil",
-        icon:"🇧🇷",
-        desc:"Biblioteca do Senado Federal brasileiro, com acesso a informação bibliográfica e recursos digitais."
-      },
-      {
-        name:"Biblioteca Digital Camões",
-        url:"https://cvc.instituto-camoes.pt/conhecer/biblioteca-digital-camoes.html",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"🇵🇹",
-        desc:"Textos e documentos de grande relevância cultural e linguística."
-      },
-      {
-        name:"Biblioteca Digital da FLUP",
-        url:"https://ler.letras.up.pt/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"🏛️",
-        desc:"Biblioteca Digital da Faculdade de Letras da Universidade do Porto."
-      },
-      {
-        name:"Biblioteca Nacional Digital",
-        url:"https://bndigital.bnportugal.gov.pt/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"📜",
-        desc:"Coleções digitalizadas da Biblioteca Nacional de Portugal."
-      },
-      {
-        name:"Catálogo – Projecto Adamastor",
-        url:"https://projectoadamastor.org/catalogo/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"⚓",
-        desc:"Catálogo de obras disponibilizadas gratuitamente pelo Projecto Adamastor."
-      },
-      {
-        name:"Classica Digitalia – Autores Gregos e Latinos",
-        url:"https://books.uc.pt/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"🏺",
-        desc:"Recursos de Estudos Clássicos associados à Universidade de Coimbra."
-      },
-      {
-        name:"Europeana – Biblioteca Digital Europeia",
-        url:"https://www.europeana.eu/pt",
-        category:"internacional ebook",
-        group:"Grandes bibliotecas digitais",
-        icon:"🇪🇺",
-        desc:"Património cultural digital europeu, incluindo livros e documentos."
-      },
-      {
-        name:"Free public domain audiobooks – LibriVox",
-        url:"https://librivox.org/",
-        category:"audio internacional",
-        group:"Audiolivros",
-        icon:"🎙️",
-        desc:"Audiolivros de obras em domínio público, lidos por voluntários."
-      },
-      {
-        name:"Fundação Jorge Álvares",
-        url:"https://www.fundacaojorgealvares-bibliotecadigital.com/",
-        category:"portugal internacional",
-        group:"Portugal e Lusofonia",
-        icon:"🌏",
-        desc:"Biblioteca digital dedicada à cultura e património ligados a Macau."
-      },
-      {
-        name:"Hemeroteca Digital",
-        url:"https://hemerotecadigital.cm-lisboa.pt/",
-        category:"portugal",
-        group:"Portugal",
-        icon:"📰",
-        desc:"Publicações periódicas digitalizadas pela Câmara Municipal de Lisboa."
-      },
-      {
-        name:"Imprensa da Universidade de Coimbra",
-        url:"https://monographs.uc.pt/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"🎓",
-        desc:"Livros e publicações académicas da Universidade de Coimbra."
-      },
-      {
-        name:"Livrónicos na Internet – Bibliotrónica Portuguesa",
-        url:"https://bibliotronicapt.pt/livronicos-na-internet/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"💻",
-        desc:"Índice de livrónicos em língua portuguesa disponíveis na Internet."
-      },
-      {
-        name:"Livros em PDF – Imprensa Nacional",
-        url:"https://imprensanacional.pt/livros-em-pdf/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"📄",
-        desc:"Seleção de livros em PDF disponibilizados pela Imprensa Nacional."
-      },
-      {
-        name:"Livros grátis – Amazon",
-        url:"https://www.amazon.com/s?k=free+ebooks",
-        category:"internacional ebook",
-        group:"e-books e leitura digital",
-        icon:"🛒",
-        desc:"Pesquisa de e-books gratuitos disponíveis na Amazon."
-      },
-      {
-        name:"Mais Liberdade – Biblioteca",
-        url:"https://maisliberdade.pt/biblioteca/",
-        category:"portugal ebook",
-        group:"Portugal",
-        icon:"📚",
-        desc:"Biblioteca de recursos e livros do Instituto +Liberdade."
-      },
-      {
-        name:"Open Library",
-        url:"https://openlibrary.org/",
-        category:"internacional ebook",
-        group:"Grandes bibliotecas digitais",
-        icon:"🌐",
-        desc:"Catálogo aberto de livros e biblioteca digital da Internet."
-      },
-      {
-        name:"Portal Domínio Público – Brasil",
-        url:"https://www.dominiopublico.gov.br/",
-        category:"brasil ebook",
-        group:"Brasil",
-        icon:"🇧🇷",
-        desc:"Biblioteca digital brasileira com obras em domínio público."
-      },
-      {
-        name:"UbuWeb",
-        url:"https://www.ubuweb.com/",
-        category:"internacional ebook",
-        group:"Grandes bibliotecas digitais",
-        icon:"🎭",
-        desc:"Arquivo independente de arte, poesia, literatura e cultura avant-garde."
-      },
-      {
-        name:"Wikisource",
-        url:"https://wikisource.org/wiki/Main_Page",
-        category:"internacional ebook",
-        group:"Grandes bibliotecas digitais",
-        icon:"📜",
-        desc:"Biblioteca livre de textos em várias línguas."
-      },
-      {
-        name:"World Digital Library",
-        url:"https://www.loc.gov/item/lcwaN0018836/",
-        category:"internacional",
-        group:"Grandes bibliotecas digitais",
-        icon:"🌍",
-        desc:"Coleção internacional de património documental digitalizado."
-      }
-    ];
+    let resources = null;
 
     const groupOrder = [
       "Grandes bibliotecas digitais",
@@ -615,7 +390,17 @@
       return filterOK && (!q || text.includes(q));
     }
 
+    function resourceUrl(value){
+      try{
+        const url = new URL(value);
+        return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+      }catch{
+        return "";
+      }
+    }
+
     function render(){
+      if(!resources) return;
       const visible = resources.filter(matches);
       library.innerHTML = "";
 
@@ -637,20 +422,27 @@
         cards.className = "cards";
 
         items.forEach(item => {
-          const a = document.createElement(item.safe === false ? "div" : "a");
-          a.className = "card" + (item.safe === false ? " unavailable" : "");
-          if(item.safe !== false){
-            a.href = item.url;
-            a.target = "_blank";
-            a.rel = "noopener noreferrer";
+          const url = item.safe === false ? "" : resourceUrl(item.url);
+          const available = Boolean(url);
+          const card = document.createElement(available ? "a" : "div");
+          card.className = "card" + (available ? "" : " unavailable");
+          if(available){
+            card.href = url;
+            card.target = "_blank";
+            card.rel = "noopener noreferrer";
           }
-          a.innerHTML = `
-            <div class="icon">${item.icon}</div>
-            <h3>${item.name}</h3>
-            <p>${item.desc}</p>
-            <div class="visit">${item.safe === false ? "Link a rever" : "Abrir recurso →"}</div>
-          `;
-          cards.appendChild(a);
+          const icon = document.createElement("div");
+          icon.className = "icon";
+          icon.textContent = item.icon;
+          const name = document.createElement("h3");
+          name.textContent = item.name;
+          const description = document.createElement("p");
+          description.textContent = item.desc;
+          const visit = document.createElement("div");
+          visit.className = "visit";
+          visit.textContent = available ? "Abrir recurso →" : "Link a rever";
+          card.append(icon, name, description, visit);
+          cards.appendChild(card);
         });
 
         section.appendChild(cards);
@@ -670,7 +462,19 @@
     });
 
     search.addEventListener("input", render);
-    render();
+    async function loadResources(){
+      try{
+        const response = await fetch("./recursos.json", {cache:"no-cache"});
+        if(!response.ok) throw new Error("Catalogue unavailable");
+        const items = await response.json();
+        if(!Array.isArray(items)) throw new Error("Invalid catalogue");
+        resources = items;
+        render();
+      }catch{
+        count.textContent = "Não foi possível carregar os recursos. Atualiza a página para tentar novamente.";
+      }
+    }
+    loadResources();
   </script>
 </body>
 </html>
